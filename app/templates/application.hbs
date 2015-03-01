@@ -56,15 +56,16 @@
       </li>
       <li class="level-1 ">
         <a href="#">Namespaces</a>
-          <ol>
-            {{#each namespace in model.namespaces}}
-              <li class='level-3'>
-                {{#link-to 'klass' namespace.name}}
-                  {{namespace.name}}
-                {{/link-to}}
-              </li>
-            {{/each}}
-          </ol>
+        <ol>
+          {{#each namespace in model.namespaces}}
+            <li class='level-3'>
+              {{#link-to 'klass' namespace.name}}
+                {{namespace.name}}
+              {{/link-to}}
+            </li>
+          {{/each}}
+        </ol>
+      </li>
 
       <li class="level-1 ">
         <a href="#">Classes</a>
