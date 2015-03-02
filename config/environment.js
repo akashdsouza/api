@@ -9,6 +9,7 @@ module.exports = function(environment) {
     // e.g. v1.8.2
     // baseURL:
     locationType: 'auto',
+    singleLibraryEmbedded: !!process.env.SINGLE_LIBRARY_EMBEDDED,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

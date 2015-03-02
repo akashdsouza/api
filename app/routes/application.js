@@ -4,9 +4,13 @@ import config from '../config/environment';
 
 export default Ember.Route.extend({
   model: function(){
-    var libraries = ajax('/config/libraries.json');
-    var versions = ajax('%@/versions.json'.fmt(config.projectName));
+    var libraries, versions;
     var library  = ajax('docs/index.json');
+
+    if (!config.singleLibraryEmbedded) {
+      libraries = ajax('/config/libraries.json');
+      versions = ajax('%@/versions.json'.fmt(config.projectName));
+    }
 
     return Ember.RSVP.hash({
       library: library,
