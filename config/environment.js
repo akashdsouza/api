@@ -23,6 +23,10 @@ module.exports = function(environment) {
     }
   };
 
+  if (ENV.singleLibraryEmbedded) {
+    ENV.locationType = 'hash';
+  }
+
   ENV.sassOptions = {
     includePaths: [
       'bower_components/bourbon/dist/'
