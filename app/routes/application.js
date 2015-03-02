@@ -5,8 +5,8 @@ import config from '../config/environment';
 export default Ember.Route.extend({
   model: function(){
     var libraries = ajax('/config/libraries.json');
-    var versions = ajax('/%@/versions.json'.fmt(config.projectName));
-    var library  = ajax('/%@/docs/index.json'.fmt(config.baseURL));
+    var versions = ajax('%@/versions.json'.fmt(config.projectName));
+    var library  = ajax('docs/index.json');
 
     return Ember.RSVP.hash({
       library: library,
