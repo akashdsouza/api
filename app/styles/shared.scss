@@ -25,7 +25,7 @@ code {
 }
 
 #content .highlight {
-  @include retina-image('../assets/images/code_background', 2px 1px, gif);
+  @include retina-image('../assets/images/code_background', 2px 1px, gif, null, _x2);
   border: 1px solid #d1d1d1;
   @include border-radius(5px);
   font-size: 12px;
@@ -136,6 +136,6 @@ code {
 }
 
 @mixin well {
-  @include retina-image('../assets/images/code_background', 2px 1px, gif);
+  @include retina-image('../assets/images/code_background', 2px 1px, gif, null, _x2);
   @include box-shadow(0 1px #ffffff, inset -1px 1px 4px rgba(0, 0, 0, 0.1));
 }

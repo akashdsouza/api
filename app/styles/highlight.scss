@@ -37,13 +37,13 @@ body.guides .highlight {
   }
 
   &.javascript .ribbon, &.js .ribbon {
-    @include retina-image('../assets/images/js-ribbon', 52px 20px, png);
+    @include retina-image('../assets/images/js-ribbon', 52px 20px, png, null, _x2);
   }
   &.html .ribbon {
-    @include retina-image('../assets/images/html-ribbon', 52px 20px, png);
+    @include retina-image('../assets/images/html-ribbon', 52px 20px, png, null, _x2);
   }
   &.handlebars .ribbon {
-    @include retina-image('../assets/images/handlebars-ribbon', 52px 20px, png);
+    @include retina-image('../assets/images/handlebars-ribbon', 52px 20px, png, null, _x2);
   }
 }
 
