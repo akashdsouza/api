@@ -1,6 +1,5 @@
 @import 'bourbon';
 @import 'reset';
-@import 'mixins/hidpi';
 @import 'mixins/border-radius';
 @import 'mixins/box-shadow';
 @import 'mixins/text-shadow';
@@ -298,7 +297,7 @@ p {
   top: 0;
   height: 60px;
   background: $orange-color top center;
-  @include hidpi('../assets/images/navigation_background', png);
+  @include retina-image('../assets/images/navigation_background', 480px 60px, 'png');
   border-bottom: 1px solid #aa412f;
   z-index: 10; /* The header is on top to have proper drop-shadow. */
   @include box-shadow(rgba(0, 0, 0, 0.3) 0 0 3px);
@@ -317,7 +316,7 @@ p {
     top: 6px;
     width: 103px;
     height: 40px;
-    @include hidpi('../assets/images/ember_logo','png');
+    @include retina-image('../assets/images/ember_logo', 103px 42px, png);
     @include transform(scale(1));
     @include transition(0.2s);
 

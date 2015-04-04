@@ -1,6 +1,5 @@
 // @import "compass/css3";
 @import "colors";
-@import "mixins/hidpi";
 
 body.guides, body.blog, body.api {
   p {
@@ -34,7 +33,7 @@ body.guides, body.blog, body.api {
     color: $orange-color;
     padding: 0px 0px 3.5em 2em;
     background: no-repeat top left;
-    @include hidpi('../assets/images/chapter-mark', 'png');
+    @include retina-image('../assets/images/chapter-mark', 12px 24px, png);
 
     &.api-header {
       padding-bottom: 0.5em;
