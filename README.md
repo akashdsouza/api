@@ -10,7 +10,7 @@ This Ember Application allows you to browse API docs.
   npm install && bower install
   ```
 
-1. Start the app with with the following command args
+1. Start the app with the following command args
   
   * `lib-dir` (path) local path to the library documented with YUIDoc
   e.g. `/usr/yourname/code/ember.js`
@@ -33,7 +33,7 @@ This Ember Application allows you to browse API docs.
 
   * `sha` (String, optional, defaults to 'master') name of the SHA or tag. This is different
   than `rev` to allow you to publish new versions of a rev's docs that have been updated
-  in future commits. So, if a spelling fixes occur in commits > v1.1.0 and < v1.1.1 you
+  in future commits. So, if spelling fixes occur in commits > v1.1.0 and < v1.1.1 you
   can publish the SHA to update: e.g. `decafbebad01` or `v1.0.0`
 
   * `github-url (url) github url of the project, no trailing slash: e.g. 'https://github.com/emberjs/ember.js'
