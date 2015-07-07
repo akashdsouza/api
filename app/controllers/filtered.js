@@ -1,6 +1,6 @@
 import Ember from "ember";
 
-var alias = Ember.computed.alias;
+const { alias } = Ember.computed;
 
 export default Ember.Mixin.create({
   needs: ['klass'],
