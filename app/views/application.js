@@ -1,5 +1,7 @@
 import Ember from "ember";
 
+const { on } = Ember;
+
 export default Ember.View.extend({
   returnToTopLinkVisible: false,
   actions: {
@@ -7,7 +9,7 @@ export default Ember.View.extend({
       window.scrollTo(0,0);
     }
   },
-  observeScrollState: function(){
+  observeScrollState: on('didInsertElement', function(){
     var _this = this;
     new window.Waypoint({
       element: this.element,
@@ -18,5 +20,5 @@ export default Ember.View.extend({
         _this.set('returnToTopLinkVisible', isReturnToTopLinkVisible);
       }
     });
-  }.on('didInsertElement')
+  })
 });

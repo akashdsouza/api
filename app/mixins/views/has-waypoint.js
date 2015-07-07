@@ -1,5 +1,7 @@
 import Ember from "ember";
 
+const { on, computed } = Ember;
+
 export default Ember.Mixin.create({
   scrollTo: function(){
     throw new Error("Classes using the HasWaypoint mixin must implement scrollTo");
@@ -7,7 +9,7 @@ export default Ember.Mixin.create({
   waypointBecameActive: function(){
     throw new Error("Classes using the HasWaypoint mixin must implement waypointBecameActive");
   },
-  addWaypoint: function(){
+  addWaypoint: on('didInsertElement', function(){
     var _this = this;
 
     var wayPoint = new window.Waypoint({
@@ -26,28 +28,28 @@ export default Ember.Mixin.create({
       this.enableWaypoint();
     }
 
-  }.on('didInsertElement'),
+  }),
 
-  enableWaypoint: function(){
+  enableWaypoint: on('becameVisible', function(){
     var waypoint = this.get('waypoint');
     waypoint.enable();
-  }.on('becameVisible'),
+  }),
 
-  disableWaypoint: function(){
+  disableWaypoint: on('becameHidden', function(){
     var waypoint = this.get('waypoint');
     waypoint.disable();
-  }.on('becameHidden'),
+  }),
 
-  removeWaypoint: function(){
+  removeWaypoint: on('willDestroyElement', function(){
     var waypoint = this.get('waypoint');
     waypoint.destroy();
-  }.on('willDestroyElement'),
+  }),
 
   /**
     Until the router becomes a service, this is the crazy way we need to get
     access to the router.
   */
-  router: function(){
+  router: computed(function(){
     return this.container.lookup('router:main');
-  }.property(),
+  }),
 });
