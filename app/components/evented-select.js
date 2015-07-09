@@ -1,9 +1,10 @@
 import Ember from 'ember';
 
-const { on } = Ember;
+const { Select, TargetActionSupport, on } = Ember;
+const { alias } = Ember.computed;
 
-export default Ember.Select.extend(Ember.TargetActionSupport, {
-  target: Ember.computed.alias('controller'),
+export default Select.extend(TargetActionSupport, {
+  target: alias('controller'),
 
   onChange: on('change', function(){
     this.triggerAction({

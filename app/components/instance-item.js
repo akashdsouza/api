@@ -3,9 +3,9 @@ import HasWaypoint from "../mixins/views/has-waypoint";
 import config from '../config/environment';
 
 const { alias } = Ember.computed;
-const { get } = Ember;
+const { Component, get } = Ember;
 
-export default Ember.Component.extend(HasWaypoint, {
+export default Component.extend(HasWaypoint, {
   /*
     @action
   */
@@ -22,7 +22,7 @@ export default Ember.Component.extend(HasWaypoint, {
   classNames: ['property', 'item-entry'],
   classNameBindings: ['isPrivate:private'],
 
-  scrollTo: function(){
+  scrollTo(){
     var router = this.get('router');
     var routeName = this.get('routeName');
     var name = this.get('name');
@@ -32,7 +32,7 @@ export default Ember.Component.extend(HasWaypoint, {
       this.sendAction('became-active');
     }
   },
-  waypointBecameActive: function(){
+  waypointBecameActive(){
     var router = this.get('router');
     var routeName = this.get('routeName');
     var name = this.get('name');
@@ -40,7 +40,7 @@ export default Ember.Component.extend(HasWaypoint, {
     router.replaceWith(routeName, name);
   },
 
-  isVisible: function(){
+  isVisible: function() {
     if (get(this, 'item.isPrivate')     && !get(this, 'show-private'))   { return false; }
     if (get(this, 'item.inheritedFrom') && !get(this, 'show-inherited')) { return false; }
     if (get(this, 'item.isProtected')   && !get(this, 'show-protected')) { return false; }
@@ -58,7 +58,7 @@ export default Ember.Component.extend(HasWaypoint, {
 
     @returns String
   */
-  codeLocation: function(){
+  codeLocation: function() {
     return '%@/blob/%@/%@#L%@'.fmt(config.githubUrl, config.sha, get(this, 'item.file'), get(this, 'item.line'));
   }.property('item.file', 'item.line').readOnly()
 });

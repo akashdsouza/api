@@ -1,7 +1,9 @@
 import Ember from "ember";
 
-export default Ember.Route.extend({
-  redirect: function(){
+const { Route } = Ember;
+
+export default Route.extend({
+  redirect(){
     var appData = this.modelFor('application');
     this.transitionTo('klass', appData.defaultIndex);
   }

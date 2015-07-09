@@ -3,10 +3,10 @@ import Ember from "ember";
 const { on, computed } = Ember;
 
 export default Ember.Mixin.create({
-  scrollTo: function(){
+  scrollTo(){
     throw new Error("Classes using the HasWaypoint mixin must implement scrollTo");
   },
-  waypointBecameActive: function(){
+  waypointBecameActive(){
     throw new Error("Classes using the HasWaypoint mixin must implement waypointBecameActive");
   },
   addWaypoint: on('didInsertElement', function(){
@@ -16,7 +16,7 @@ export default Ember.Mixin.create({
       element: this.element,
       continuous: false,
       enabled: false,
-      handler: function() {
+      handler() {
         _this.waypointBecameActive();
       }
     });
