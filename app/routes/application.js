@@ -2,8 +2,10 @@ import Ember from "ember";
 import ajax from "ic-ajax";
 import config from '../config/environment';
 
-export default Ember.Route.extend({
-  model: function(){
+const { Route, RSVP } = Ember;
+
+export default Route.extend({
+  model(){
     var libraries, versions;
     var library  = ajax('docs/index.json');
 
@@ -12,7 +14,7 @@ export default Ember.Route.extend({
       versions = ajax('%@/versions.json'.fmt(config.projectName));
     }
 
-    return Ember.RSVP.hash({
+    return RSVP.hash({
       library: library,
       libraries: libraries,
       versions: versions
@@ -25,7 +27,7 @@ export default Ember.Route.extend({
     });
   },
   actions: {
-    versionChanged: function(version){
+    versionChanged(version){
       var parser = document.createElement('a');
       parser.href = window.location;
 

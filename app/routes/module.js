@@ -1,11 +1,13 @@
 import Ember from "ember";
 import ajax from "ic-ajax";
 
-export default Ember.Route.extend({
-  model: function(params){
+const { Route } = Ember;
+
+export default Route.extend({
+  model(params){
     return ajax('docs/modules/%@.json'.fmt(params.moduleId));
   },
-  afterModel: function(){
+  afterModel(){
     // megajank. View#willDestroyElement is scheduled after
     // route entering. Not sure where to properly schedule this.
     setTimeout(function(){

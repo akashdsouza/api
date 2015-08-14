@@ -1,9 +1,11 @@
 import InstanceItemComponent from "./instance-item";
 
+const { computed } = Ember;
+
 export default InstanceItemComponent.extend({
   itemType: 'method',
   routeName: 'klass.methods.method',
-  parameterSentence: function(){
+  parameterSentence: computed('item.params.@each', function(){
     return this.get('item.params').mapProperty('name').join(', ');
-  }.property('item.params.@each')
+  })
 });

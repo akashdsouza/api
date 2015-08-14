@@ -1,13 +1,14 @@
 import Ember from "ember";
-var get = Ember.get;
 import config from '../config/environment';
 
-export default Ember.Component.extend({
+const { Component, get, computed } = Ember;
+
+export default Component.extend({
   file: null,
   line: null,
   tagName: 'a',
   attributeBindings: ['href'],
-  href: function(){
+  href: computed('file', 'line', function(){
     return "%@/tree/%@/%@#L%@".fmt(config.githubUrl, config.sha, get(this, 'file'), get(this, 'line'));
-  }.property('file', 'line')
+  })
 });

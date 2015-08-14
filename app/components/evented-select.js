@@ -1,14 +1,17 @@
 import Ember from 'ember';
 
-export default Ember.Select.extend(Ember.TargetActionSupport, {
-  target: Ember.computed.alias('controller'),
+const { Select, TargetActionSupport, on } = Ember;
+const { alias } = Ember.computed;
 
-  onChange: function(){
+export default Select.extend(TargetActionSupport, {
+  target: alias('controller'),
+
+  onChange: on('change', function(){
     this.triggerAction({
       action: this.get('action'),
       actionContext: [this.selection, this._oldValue]
     });
     this._oldValue = this.selection;
-  }.on('change')
+  })
 
 });

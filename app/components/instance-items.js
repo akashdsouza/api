@@ -1,7 +1,9 @@
 import Ember from "ember";
 import HasWaypoint from "../mixins/views/has-waypoint";
 
-export default Ember.Component.extend(HasWaypoint, {
+const { Component } = Ember;
+
+export default Component.extend(HasWaypoint, {
   model: null,
   'show-private': false,
   'show-protected': false,
@@ -10,18 +12,18 @@ export default Ember.Component.extend(HasWaypoint, {
   classNames: ['class-items'],
   routeName: null,
   activeChild: false,
-  scrollTo: function(){
+  scrollTo(){
     if (!this.get('activeChild')) {
       window.scrollTo(0, this.$().offset().top);
     }
   },
-  waypointBecameActive: function(){
+  waypointBecameActive(){
     var router = this.get('router');
     var routeName = this.get('routeName');
     router.replaceWith(routeName);
   },
   actions: {
-    childBecameActiveWaypoint: function(){
+    childBecameActiveWaypoint(){
       this.set('activeChild', true);
     }
   },

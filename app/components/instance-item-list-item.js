@@ -1,7 +1,8 @@
 import Ember from "ember";
-var get = Ember.get;
 
-export default Ember.Component.extend({
+const { Component, get } = Ember;
+
+export default Component.extend({
   tagName: 'li',
   classNameBindings: ['type'],
   isVisible: function(){

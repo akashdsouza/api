@@ -1,8 +1,9 @@
 import Ember from "ember";
 
-var alias = Ember.computed.alias;
+const { Mixin } = Ember;
+const { alias } = Ember.computed;
 
-export default Ember.Mixin.create({
+export default Mixin.create({
   needs: ['klass'],
   private: alias('controllers.klass.private'),
   deprecated: alias('controllers.klass.deprecated'),

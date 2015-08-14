@@ -6,9 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('module', {path: '/module/:moduleId'});
+  this.route('module', {path: '/module/:moduleId'});
 
-  this.resource('klass', {path: '/class/:classId'}, function(){
+  this.route('klass', {path: '/class/:classId'}, function(){
     this.route('index', {path: '/'});
     this.route('methods', function(){
       this.route('method', {path: '/:methodId'});

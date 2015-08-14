@@ -1,6 +1,6 @@
 import Ember from "ember";
-var get = Ember.get;
-var set = Ember.set;
+
+const { get, set, on } = Ember;
 
 /*
   EventedCheckbox is a checkbox component that doesn't
@@ -21,11 +21,11 @@ export default Ember.Component.extend({
   value: null,
   attributeBindings: ['type', 'checked'],
   type: 'checkbox',
-  _setupEventListener: function(){
+  _setupEventListener: on('init', function(){
     this.on('change', this, this._triggerAction);
     this.on('change', this, this._updateElementValue);
 
-  }.on('init'),
+  }),
   _triggerAction: function(){
     var checked = this.$().prop('checked');
     this.sendAction('action', get(this, 'value'), checked);
