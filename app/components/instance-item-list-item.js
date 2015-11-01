@@ -1,11 +1,15 @@
 import Ember from "ember";
 
-const { Component, get } = Ember;
+const { Component, get, computed } = Ember;
 
 export default Component.extend({
   tagName: 'li',
   classNameBindings: ['type'],
-  isVisible: function(){
+
+  isVisible: computed('show-private', 'show-protected', 'show-deprecated',
+                      'show-inherited', 'item.isPrivate', 'item.isProtected',
+                      'item.inheritedFrom', 'item.isDeprecated',
+                      function() {
     if (get(this, 'item.isPrivate') && !get(this, 'show-private')) {
       return false;
     }
@@ -23,9 +27,8 @@ export default Component.extend({
     }
 
     return true;
-  }.property('show-private', 'show-protected', 'show-deprecated',
-             'show-inherited', 'item.isPrivate', 'item.isProtected',
-             'item.inheritedFrom', 'item.isDeprecated'),
+  }),
+
   'route-name': null,
   'show-private': false,
   'show-protected': false,

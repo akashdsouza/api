@@ -2,8 +2,7 @@ import Ember from "ember";
 import HasWaypoint from "../mixins/views/has-waypoint";
 import config from '../config/environment';
 
-const { alias } = Ember.computed;
-const { Component, get } = Ember;
+const { Component, get, computed: { alias } } = Ember;
 
 export default Component.extend(HasWaypoint, {
   /*
@@ -15,9 +14,9 @@ export default Component.extend(HasWaypoint, {
   itemType: null,
   name: alias('item.name'),
   routeName: null,
-  id: function(){
+  id: computed('item.name', 'itemType', function() {
     return "%@_%@".fmt(get(this, 'itemType'), get(this, 'item.name'));
-  }.property('item.name', 'itemType').readOnly(),
+  }).readOnly(),
   isPrivate: alias('item.isPrivate'),
   classNames: ['property', 'item-entry'],
   classNameBindings: ['isPrivate:private'],
@@ -40,16 +39,17 @@ export default Component.extend(HasWaypoint, {
     router.replaceWith(routeName, name);
   },
 
-  isVisible: function() {
+  isVisible: computed('show-private', 'show-protected', 'show-deprecated',
+                            'show-inherited', 'item.isPrivate', 'item.isProtected',
+                            'item.inheritedFrom', 'item.isDeprecated',
+                            function() {
     if (get(this, 'item.isPrivate')     && !get(this, 'show-private'))   { return false; }
     if (get(this, 'item.inheritedFrom') && !get(this, 'show-inherited')) { return false; }
     if (get(this, 'item.isProtected')   && !get(this, 'show-protected')) { return false; }
     if (get(this, 'item.isDeprecated')  && !get(this, 'show-deprecated')){ return false; }
 
     return true;
-  }.property('show-private', 'show-protected', 'show-deprecated',
-             'show-inherited', 'item.isPrivate', 'item.isProtected',
-             'item.inheritedFrom', 'item.isDeprecated'),
+  }),
   /**
     The URL where you cand find the code for this property on github.
     TODO: don't link to blob/master,
@@ -58,7 +58,7 @@ export default Component.extend(HasWaypoint, {
 
     @returns String
   */
-  codeLocation: function() {
+  codeLocation: computed('item.file', 'item.line', function() {
     return '%@/blob/%@/%@#L%@'.fmt(config.githubUrl, config.sha, get(this, 'item.file'), get(this, 'item.line'));
-  }.property('item.file', 'item.line').readOnly()
+  }).readOnly()
 });
