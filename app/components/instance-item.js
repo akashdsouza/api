@@ -2,7 +2,8 @@ import Ember from "ember";
 import HasWaypoint from "../mixins/views/has-waypoint";
 import config from '../config/environment';
 
-const { Component, get, computed: { alias } } = Ember;
+const { Component, get, computed } = Ember;
+const { alias } = computed;
 
 export default Component.extend(HasWaypoint, {
   /*
