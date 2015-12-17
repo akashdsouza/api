@@ -30,9 +30,9 @@
         <li class="level-1">
           <a href="#">Projects</a>
           <ol>
-            {{#each library in model.libraries}}
+            {{#each model.libraries as |library|}}
              <li class="level-3">
-                <a {{bind-attr href=library.slug}}>{{library.name}}</a>
+                <a href="{{library.slug}}">{{library.name}}</a>
               </li>
             {{/each}}
           </ol>
@@ -40,7 +40,7 @@
       {{/if}}
 
       <li class="level-1">
-        <a {{bind-attr href=githubHREF}} target="_blank"> Tag: {{rev}}</a>
+        <a href="{{githubHREF}}" target="_blank"> Tag: {{rev}}</a>
         {{#if model.versions}}
           {{evented-select content=model.versions action="versionChanged"}}
         {{/if}}
@@ -49,7 +49,7 @@
       <li class="level-1">
         <a href="#">Modules</a>
         <ol>
-          {{#each module in model.modules}}
+          {{#each model.modules as |module|}}
             <li class='level-3'>
               {{#link-to 'module' module.name}}
                 {{module.name}}
@@ -61,7 +61,7 @@
       <li class="level-1 ">
         <a href="#">Namespaces</a>
         <ol>
-          {{#each namespace in model.namespaces}}
+          {{#each model.namespaces as |namespace|}}
             <li class='level-3'>
               {{#link-to 'klass' namespace.name}}
                 {{namespace.name}}
@@ -74,7 +74,7 @@
       <li class="level-1 ">
         <a href="#">Classes</a>
         <ol class="">
-          {{#each klass in model.classes}}
+          {{#each model.classes as |klass|}}
             <li class='level-3'>
               {{#link-to 'klass' klass.name}}
                 {{klass.name}}

@@ -16,7 +16,7 @@
 {{#if model.submodules}}
   <h2>Submodules</h2>
   <ul>
-    {{#each submodules in model.submodules}}
+    {{#each model.submodules as |submodule|}}
       <li>
         {{#link-to 'module' submodule.name}}
           {{submodule.name}}
@@ -28,7 +28,7 @@
 
 <h2>Classes and Namespaces</h2>
 <ul>
-  {{#each klass in model.classes}}
+  {{#each model.classes as |klass|}}
     <li>
       {{#link-to 'klass' klass.name}}
         {{klass.name}}
@@ -36,4 +36,3 @@
     </li>
   {{/each}}
 </ul>
-
