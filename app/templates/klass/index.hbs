@@ -3,7 +3,7 @@
 
   <p></p>
   <ul class="index-list">
-    {{#each method in model.methods}}
+    {{#each model.methods as |method|}}
       {{instance-item-list-item
         type="method"
         route-name="klass.methods.method"
@@ -24,7 +24,7 @@
   <p></p>
 
   <ul class="index-list">
-    {{#each property in model.properties}}
+    {{#each model.properties as |property|}}
       {{instance-item-list-item
         type="property"
         route-name="klass.properties.property"
@@ -44,7 +44,7 @@
 
   <p></p>
   <ul class="index-list">
-    {{#each event in model.events}}
+    {{#each model.events as |event|}}
       {{instance-item-list-item
         type="event"
         route-name="klass.events.event"

@@ -30,7 +30,7 @@
   {{#if item.parameters}}
     <h3>Parameters:</h3>
     <dl>
-      {{#each param in item.parameters}}
+      {{#each item.parameters as |param|}}
         <dt>
           <strong>{{param.name}}</strong>
           <span class="type">{{param.type}}</span>

@@ -19,7 +19,7 @@
   {{/if}}
 
   {{#if model.uses}}
-    {{#each use in model.uses}}
+    {{#each model.uses as |use|}}
     <p>
       Uses:
       {{#link-to 'klass' use}}
