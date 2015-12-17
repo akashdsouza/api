@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import InstanceItemComponent from "./instance-item";
 
 const { computed } = Ember;
