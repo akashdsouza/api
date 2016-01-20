@@ -8,6 +8,6 @@ export default InstanceItemComponent.extend({
   routeName: 'klass.methods.method',
 
   parameterSentence: computed('item.params.[]', function(){
-    return this.get('item.params').mapProperty('name').join(', ');
+    return this.get('item.params').mapBy('name').join(', ');
   })
 });
