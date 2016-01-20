@@ -5,7 +5,7 @@ const { Route, RSVP, inject } = Ember;
 
 export default Route.extend({
   ajax: inject.service(),
-  
+
   model(){
     var libraries, versions;
     var library  = this.get('ajax').request('docs/index.json');
@@ -26,16 +26,5 @@ export default Route.extend({
 
       return library;
     });
-  },
-  actions: {
-    versionChanged(version){
-      var parser = document.createElement('a');
-      parser.href = window.location;
-
-      var port = parser.port ? ":%@".fmt(parser.port) : "";
-      var location = [parser.protocol, '//', parser.hostname, port, '/', config.projectName, '/', version].join('');
-
-      window.location = location;
-    }
   }
 });

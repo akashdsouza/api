@@ -8,5 +8,17 @@ export default Ember.Controller.extend({
   sha: config.sha,
   githubHREF: computed(function(){
     return "%@/commits/%@".fmt(config.githubUrl, config.sha);
-  })
+  }),
+
+  actions: {
+    versionChanged(version){
+      var parser = document.createElement('a');
+      parser.href = window.location;
+
+      var port = parser.port ? ":%@".fmt(parser.port) : "";
+      var location = [parser.protocol, '//', parser.hostname, port, '/', config.projectName, '/', version].join('');
+
+      window.location = location;
+    }
+  }
 });

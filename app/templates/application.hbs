@@ -42,7 +42,9 @@
       <li class="level-1">
         <a href="{{githubHREF}}" target="_blank"> Tag: {{rev}}</a>
         {{#if model.versions}}
-          {{evented-select content=model.versions action="versionChanged"}}
+          {{#power-select options=model.versions selected=rev onchange=(action "versionChanged") as |version|}}
+            {{version}}
+          {{/power-select}}
         {{/if}}
       </li>
 
