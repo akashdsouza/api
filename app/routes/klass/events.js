@@ -1,11 +1,12 @@
 import Ember from "ember";
-import ajax from "ic-ajax";
 
-const { Route } = Ember;
+const { Route, inject } = Ember;
 
 export default Route.extend({
+  ajax: inject.service(),
+
   model(){
     var name = this.modelFor('klass').name;
-    return ajax('docs/%@/events.json'.fmt(name));
+    return this.get('ajax').request('docs/%@/events.json'.fmt(name));
   }
 });

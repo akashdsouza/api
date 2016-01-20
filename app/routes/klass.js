@@ -1,11 +1,12 @@
 import Ember from "ember";
-import ajax from "ic-ajax";
 
-const { Route } = Ember;
+const { Route, inject } = Ember;
 
 export default Route.extend({
+  ajax: inject.service(),
+  
   model(params){
-    return ajax('docs/%@.json'.fmt(params.classId));
+    return this.get('ajax').request('docs/%@.json'.fmt(params.classId));
   },
   afterModel(){
     // megajank. View#willDestroyElement is scheduled after
@@ -15,4 +16,3 @@ export default Route.extend({
     }, 10);
   }
 });
-
