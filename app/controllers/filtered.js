@@ -1,12 +1,13 @@
 import Ember from "ember";
 
-const { Mixin } = Ember;
+const { Mixin, inject } = Ember;
 const { alias } = Ember.computed;
 
 export default Mixin.create({
-  needs: ['klass'],
-  private: alias('controllers.klass.private'),
-  deprecated: alias('controllers.klass.deprecated'),
-  inherited: alias('controllers.klass.inherited'),
-  protected: alias('controllers.klass.protected')
+  klass: inject.controller(),
+
+  private: alias('klass.private'),
+  deprecated: alias('klass.deprecated'),
+  inherited: alias('klass.inherited'),
+  protected: alias('klass.protected')
 });

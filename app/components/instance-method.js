@@ -6,7 +6,8 @@ const { computed } = Ember;
 export default InstanceItemComponent.extend({
   itemType: 'method',
   routeName: 'klass.methods.method',
-  parameterSentence: computed('item.params.@each', function(){
-    return this.get('item.params').mapProperty('name').join(', ');
+
+  parameterSentence: computed('item.params.[]', function(){
+    return this.get('item.params').mapBy('name').join(', ');
   })
 });
