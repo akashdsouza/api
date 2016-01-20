@@ -38,7 +38,7 @@ This Ember Application allows you to browse API docs.
   in future commits. So, if spelling fixes occur in commits > v1.1.0 and < v1.1.1 you
   can publish the SHA to update: e.g. `decafbebad01` or `v1.0.0`
 
-  * `github-url (url) github url of the project, no trailing slash: e.g. 'https://github.com/emberjs/ember.js'
+  * `github-url` (url) github url of the project, no trailing slash: e.g. 'https://github.com/emberjs/ember.js'
 
   ```shell
   ember server \
