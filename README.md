@@ -55,6 +55,6 @@ This Ember Application allows you to browse API docs.
 1. View the app
   
   ```shell
-  open http://0.0.0.0:4200/<value for rev argument>
+  open http://0.0.0.0:4200/<project-name>/<value for rev argument>/
   ```
 
