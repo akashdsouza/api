@@ -1,17 +1,18 @@
 import Ember from "ember";
-import ajax from "ic-ajax";
 import config from '../config/environment';
 
-const { Route, RSVP } = Ember;
+const { Route, RSVP, inject } = Ember;
 
 export default Route.extend({
+  ajax: inject.service(),
+  
   model(){
     var libraries, versions;
-    var library  = ajax('docs/index.json');
+    var library  = this.get('ajax').request('docs/index.json');
 
     if (!config.singleLibraryEmbedded) {
-      libraries = ajax('/config/libraries.json');
-      versions = ajax('%@/versions.json'.fmt(config.projectName));
+      libraries = this.get('ajax').request('/config/libraries.json');
+      versions = this.get('ajax').request('%@/versions.json'.fmt(config.projectName));
     }
 
     return RSVP.hash({
