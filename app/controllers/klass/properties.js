@@ -1,6 +1,6 @@
 import Ember from "ember";
 import FilteredController from "../filtered";
 
-const { ArrayController } = Ember;
+const { Controller } = Ember;
 
-export default ArrayController.extend(FilteredController);
+export default Controller.extend(FilteredController);
