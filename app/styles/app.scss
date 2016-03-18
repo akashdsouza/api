@@ -856,4 +856,15 @@ body.not-found #content {
   }
 }
 
+/*Version switcher styling*/
+.select-version .select-version-trigger {
+  line-height: 28px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, Sans-Serif;
+  font-size: 14px;
+}
+
+.ember-power-select-option {
+  padding: 6px;
+}
+
 @import 'highlight';
